@@ -1,0 +1,15 @@
+-- Datos laborales colombianos del empleado (extiende EMPLOYEE sin modificarla)
+CREATE OR REPLACE TABLE NOMINA_EMP (
+  EMPNO          CHAR(6)          NOT NULL,
+  TIPO_CONTRATO  CHAR(2)          NOT NULL DEFAULT 'IN',  -- FI=Fijo, IN=Indefinido, OB=Obra
+  FECHA_INGRESO  DATE             NOT NULL,
+  SALARIO_BASICO DECIMAL(11,2)    NOT NULL,               -- Salario mensual en pesos COP
+  NIVEL_RIESGO   SMALLINT         NOT NULL DEFAULT 1,     -- ARL: 1=0.522%, 2=1.044%, 3=2.436%, 4=4.350%, 5=6.960%
+  FONDO_PENSION  VARCHAR(30),
+  EPS            VARCHAR(30),
+  CAJA_COMP      VARCHAR(30),
+  ACTIVO         CHAR(1)          NOT NULL DEFAULT 'S',
+  PRIMARY KEY (EMPNO),
+  FOREIGN KEY (EMPNO) REFERENCES EMPLOYEE(EMPNO)
+    ON DELETE RESTRICT
+);

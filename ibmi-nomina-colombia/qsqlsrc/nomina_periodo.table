@@ -1,0 +1,13 @@
+-- Períodos quincenales de nómina
+CREATE OR REPLACE TABLE NOMINA_PERIODO (
+  PERIODO_ID  CHAR(8)    NOT NULL,    -- Formato: YYYYMMQQ (QQ=01 primera, 02 segunda quincena)
+  ANIO        SMALLINT   NOT NULL,
+  MES         SMALLINT   NOT NULL,
+  QUINCENA    SMALLINT   NOT NULL,   -- 1 = días 1-15, 2 = días 16-último
+  FECHA_INI   DATE       NOT NULL,
+  FECHA_FIN   DATE       NOT NULL,
+  ESTADO      CHAR(2)    NOT NULL DEFAULT 'AB',  -- AB=Abierto, CE=Cerrado, PA=Pagado
+  PRIMARY KEY (PERIODO_ID),
+  CHECK (QUINCENA IN (1, 2)),
+  CHECK (ESTADO IN ('AB', 'CE', 'PA'))
+);
