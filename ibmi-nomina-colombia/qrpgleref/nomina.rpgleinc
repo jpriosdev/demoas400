@@ -1,0 +1,107 @@
+**free
+
+// ─── Constantes legales Colombia 2024 ────────────────────────────────────────
+dcl-c SMMLV          1300000;    // Salario Mínimo Mensual Legal Vigente
+dcl-c AUX_TRANSPORTE  162000;    // Auxilio de transporte mensual
+dcl-c DIAS_MES            30;    // Colombia usa 30 días para cualquier mes
+dcl-c HORAS_DIA            8;    // Jornada ordinaria diaria
+
+// Seguridad social - empleado
+dcl-c PCT_SALUD_EMP    0.04;
+dcl-c PCT_PENSION_EMP  0.04;
+
+// Seguridad social - empleador
+dcl-c PCT_SALUD_COMP   0.085;
+dcl-c PCT_PENSION_COMP 0.12;
+
+// Parafiscales - empleador
+dcl-c PCT_SENA  0.02;
+dcl-c PCT_ICBF  0.03;
+dcl-c PCT_CAJA  0.04;
+
+// ARL por nivel de riesgo (empleador)
+dcl-c ARL_N1  0.00522;
+dcl-c ARL_N2  0.01044;
+dcl-c ARL_N3  0.02436;
+dcl-c ARL_N4  0.04350;
+dcl-c ARL_N5  0.06960;
+
+// Recargos sobre hora ordinaria (horas extras)
+dcl-c REC_HED   0.25;    // Extra diurna
+dcl-c REC_HEN   0.75;    // Extra nocturna
+dcl-c REC_HEFD  0.75;    // Extra festivo diurna
+dcl-c REC_HEFN  1.10;    // Extra festivo nocturna
+dcl-c REC_RNO   0.35;    // Recargo nocturno ordinario (no es hora extra)
+
+// Provisiones prestaciones (tasa por quincena)
+dcl-c PCT_CESANTIAS  0.0833;   // 1/12 del salario mensual por mes → /2 por quincena
+dcl-c PCT_INT_CES    0.01;     // 1% mensual sobre cesantías
+dcl-c PCT_PRIMA      0.0833;
+dcl-c PCT_VACACIONES 0.0417;   // 15 días / 360 días
+
+// ─── Data structure: liquidación completa ────────────────────────────────────
+dcl-ds nomina_liq_t qualified template;
+  found              ind;
+  // Identificadores
+  empno              char(6);
+  periodo_id         char(8);
+  // Info del empleado (de consulta, no almacenada en tabla)
+  nombre             varchar(50);
+  salario_basico     packed(11:2);
+  nivel_riesgo       packed(1:0);
+  // Entradas del usuario
+  dias_trab          packed(3:0);
+  horas_ext_diur     packed(5:2);
+  horas_ext_noc      packed(5:2);
+  horas_ext_fest_d   packed(5:2);
+  horas_ext_fest_n   packed(5:2);
+  horas_rec_noc      packed(5:2);
+  otras_ded          packed(11:2);
+  // Devengados
+  salario_quincena   packed(11:2);
+  aux_transporte     packed(9:2);
+  valor_hext         packed(11:2);
+  total_devengado    packed(11:2);
+  // Deducciones empleado
+  salud_emp          packed(9:2);
+  pension_emp        packed(9:2);
+  retencion_fte      packed(11:2);
+  total_deduccion    packed(11:2);
+  neto_pagar         packed(11:2);
+  // Aportes empleador
+  salud_emp_comp     packed(9:2);
+  pension_emp_comp   packed(9:2);
+  arl                packed(9:2);
+  sena               packed(9:2);
+  icbf               packed(9:2);
+  caja_comp          packed(9:2);
+  total_aportes_emp  packed(11:2);
+  // Provisiones prestaciones
+  prov_cesantias     packed(9:2);
+  prov_int_ces       packed(9:2);
+  prov_prima         packed(9:2);
+  prov_vacaciones    packed(9:2);
+  total_provisiones  packed(11:2);
+  costo_total        packed(11:2);
+end-ds;
+
+// ─── Prototipos exportados por NOMLIQ.SRVPGM ─────────────────────────────────
+dcl-pr calcularLiquidacion like(nomina_liq_t) extproc('CALCULARLIQ');
+  empno            char(6)      const;
+  periodo_id       char(8)      const;
+  dias_trab        packed(3:0)  const;
+  horas_ext_diur   packed(5:2)  const;
+  horas_ext_noc    packed(5:2)  const;
+  horas_ext_fest_d packed(5:2)  const;
+  horas_ext_fest_n packed(5:2)  const;
+  horas_rec_noc    packed(5:2)  const;
+  otras_ded        packed(11:2) const;
+end-pr;
+
+dcl-pr guardarLiquidacion ind extproc('GUARDARLIQ');
+  liq likeds(nomina_liq_t) const;
+end-pr;
+
+dcl-pr getArlPct packed(7:5) extproc('GETARLPCT');
+  nivel_riesgo packed(1:0) const;
+end-pr;
