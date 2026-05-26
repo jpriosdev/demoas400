@@ -1,0 +1,14 @@
+{
+  "description": "Nomina Colombia - IBM i payroll system with Colombian labor rules",
+  "includePath": [
+    "qrpgleref"
+  ],
+  "curlib": "&CURLIB",
+  "objlib": "&CURLIB",
+  "preUsrlibl": [
+    "&CURLIB",
+    "RPGUNIT",
+    "QDEVTOOLS"
+  ],
+  "buildCommand": "/QOpenSys/pkgs/bin/gmake BIN_LIB=&CURLIB"
+}
