@@ -1,0 +1,43 @@
+     A                                      INDARA
+     A                                      CA05(05)
+     A                                      CA06(06)
+     A                                      CA12(12)
+     A          R SFLDTA                    SFL
+     A            RRN            4Y 0H
+     A            XSEL           1A  B  7  2
+     A            XEMPNO         6A  O  7  5
+     A            XNOMBRE       25A  O  7 13
+     A            XESTADO        2A  O  7 40
+     A            XNETO         13S 2O  7 44
+     A          R SFLCTL                    SFLCTL(SFLDTA)
+     A                                      SFLPAG(0014)
+     A                                      SFLSIZ(9999)
+     A                                      OVERLAY
+     A  85                                  SFLDSPCTL
+     A  95                                  SFLDSP
+     A N85                                  SFLCLR
+     A            SFLRRN         4S 0H      SFLRCDNBR(CURSOR)
+     A            XPERIODO       8A  B  3 14
+     A                                  1 27'Nomina Colombia'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  3  2'Periodo:'
+     A                                  6  2'Opt'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  6  5'Empleado'
+     A                                      DSPATR(UL)
+     A                                  6 13'Nombre'
+     A                                      DSPATR(UL)
+     A                                  6 40'Est'
+     A                                      DSPATR(UL)
+     A                                  6 44'Neto a Pagar'
+     A                                      DSPATR(UL)
+     A          R FOOTER_FMT
+     A                                      OVERLAY
+     A                                 23  2'F6=Liquidar'
+     A                                      COLOR(BLU)
+     A                                 23 15'F5=Ver Comprobante'
+     A                                      COLOR(BLU)
+     A                                 23 35'F12=Salir'
+     A                                      COLOR(BLU)
