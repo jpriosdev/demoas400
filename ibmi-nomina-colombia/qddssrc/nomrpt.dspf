@@ -1,0 +1,68 @@
+     A                                      INDARA
+     A                                      CA12(12)
+     A          R RPTFMT
+     A                                  1 26'Comprobante de Nomina Colombia'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  2  2'Empleado:'
+     A            REMPNO         6A  O  2 12
+     A            RNOMBRE       40A  O  2 20
+     A                                  3  2'Periodo: '
+     A            RPER           8A  O  3 12
+     A                                  3 22'Del:'
+     A            RFECINI       10A  O  3 27
+     A                                  3 39'Al:'
+     A            RFECFIN       10A  O  3 43
+     A                                  3 56'Dias:'
+     A            RDIAS          2S 0O  3 62
+     A                                  5  2'===== DEVENGADOS ====='
+     A                                      DSPATR(HI)
+     A                                  6  2'Salario Quincenal:'
+     A            RSALQNA       13S 2O  6 22
+     A                                  7  2'Auxilio Transporte:'
+     A            RAUXTRP       13S 2O  7 22
+     A                                  8  2'Valor Horas Extras:'
+     A            RVHEXT        13S 2O  8 22
+     A                                  9  2'TOTAL DEVENGADO:'
+     A            RTOTDEV       13S 2O  9 19
+     A                                      DSPATR(HI)
+     A                                 11  2'===== DEDUCCIONES EMPLEADO ====='
+     A                                      DSPATR(HI)
+     A                                 12  2'Salud (4%):'
+     A            RSALEMP       13S 2O 12 15
+     A                                 13  2'Pension (4%):'
+     A            RPENEMP       13S 2O 13 16
+     A                                 14  2'Otras Deducciones:'
+     A            RODED         13S 2O 14 21
+     A                                 15  2'TOTAL DEDUCCIONES:'
+     A            RTOTDED       13S 2O 15 21
+     A                                      DSPATR(HI)
+     A                                 16  2'NETO A PAGAR:'
+     A            RNETO         13S 2O 16 16
+     A                                      DSPATR(HI)
+     A                                 18  2'===== APORTES EMPLEADOR ====='
+     A                                      COLOR(WHT)
+     A                                 19  2'Salud (8.5%):'
+     A            RSALCOMP      13S 2O 19 16
+     A                                 19 35'Pension (12%):'
+     A            RPENCOMP      13S 2O 19 50
+     A                                 20  2'ARL:'
+     A            RARL          13S 2O 20  8
+     A                                 20 25'SENA (2%):'
+     A            RSENA         13S 2O 20 37
+     A                                 21  2'ICBF (3%):'
+     A            RICBF         13S 2O 21 14
+     A                                 21 30'Caja Comp (4%):'
+     A            RCAJA         13S 2O 21 47
+     A                                 22  2'===== PROVISIONES ====='
+     A                                      COLOR(WHT)
+     A                                 23  2'Cesantias:'
+     A            RPRCES        11S 2O 23 14
+     A                                 23 28'Intereses:'
+     A            RPRINT        11S 2O 23 40
+     A                                 23 54'Prima:'
+     A            RPRPRI        11S 2O 23 61
+     A          R RPTFOOTER
+     A                                      OVERLAY
+     A                                 24  2'F12=Volver'
+     A                                      COLOR(BLU)
