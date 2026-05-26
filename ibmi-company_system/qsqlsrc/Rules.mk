@@ -1,0 +1,4 @@
+DEPARTMENT.FILE: department.table
+EMPLOYEE.FILE: employee.table
+POPDEPT.PGM: popdept.sqlprc DEPARTMENT.FILE
+POPEMP.PGM: popemp.sqlprc EMPLOYEE.FILE DEPARTMENT.FILE
