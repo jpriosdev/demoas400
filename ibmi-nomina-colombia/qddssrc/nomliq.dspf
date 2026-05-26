@@ -1,0 +1,89 @@
+     A                                      INDARA
+     A                                      CA05(05)
+     A                                      CA10(10)
+     A                                      CA12(12)
+     A          R LIQFMT
+     A                                  1 24'Liquidacion Quincenal Colombia'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  2  2'Empleado:'
+     A            XEMPNO         6A  O  2 12
+     A            XNOMBRE       40A  O  2 20
+     A                                  3  2'Periodo: '
+     A            XPER           8A  O  3 12
+     A                                  3 22'Del:'
+     A            XFECINI       10A  O  3 27
+     A                                  3 39'Al:'
+     A            XFECFIN       10A  O  3 43
+     A                                  5  2'Dias trabajados:'
+     A            XDIAS          2S 0B  5 20
+     A                                  7  2'--- Horas Extras ---'
+     A                                      COLOR(WHT)
+     A                                  8  2'Diurnas (+25%):'
+     A            XHED           5S 2B  8 20
+     A                                  8 30'Nocturnas (+75%):'
+     A            XHEN           5S 2B  8 50
+     A                                  9  2'Fest.Diur (+75%):'
+     A            XHEFD          5S 2B  9 20
+     A                                  9 30'Fest.Noct(+110%):'
+     A            XHEFN          5S 2B  9 50
+     A                                 10  2'Rec.Noct (+35%):'
+     A            XRNO           5S 2B 10 20
+     A                                 10 30'Otras Ded.:'
+     A            XODED         13S 2B 10 43
+     A                                 12  2'--- Devengados ---'
+     A                                      COLOR(WHT)
+     A                                 13  2'Sal.Quincena:'
+     A            XSALQNA       13S 2O 13 17
+     A                                 13 34'Aux.Transporte:'
+     A            XAUXTRP       11S 2O 13 50
+     A                                 14  2'Val.H.Extras:'
+     A            XVHEXT        13S 2O 14 17
+     A                                 14 34'Total Devengado:'
+     A            XTOTDEV       13S 2O 14 51
+     A                                 15  2'--- Deducciones Empleado ---'
+     A                                      COLOR(WHT)
+     A                                 16  2'Salud  4%:'
+     A            XSALEMP       11S 2O 16 14
+     A                                 16 29'Pension 4%:'
+     A            XPENEMP       11S 2O 16 42
+     A                                 17  2'Total Deduccion:'
+     A            XTOTDED       13S 2O 17 19
+     A                                 17 34'NETO A PAGAR:'
+     A            XNETO         13S 2O 17 48
+     A                                      DSPATR(HI)
+     A                                 18  2'--- Aportes Empleador ---'
+     A                                      COLOR(WHT)
+     A                                 19  2'Salud 8.5%:'
+     A            XSALCOMP      11S 2O 19 14
+     A                                 19 29'Pension 12%:'
+     A            XPENCOMP      11S 2O 19 43
+     A                                 20  2'ARL:'
+     A            XARL          11S 2O 20  7
+     A                                 20 22'SENA 2%:'
+     A            XSENA         11S 2O 20 31
+     A                                 20 46'ICBF 3%:'
+     A            XICBF         11S 2O 20 55
+     A                                 21  2'Caja 4%:'
+     A            XCAJA         11S 2O 21 12
+     A                                 21 27'--- Provisiones ---'
+     A                                      COLOR(WHT)
+     A                                 22  2'Cesantias:'
+     A            XPRCES        11S 2O 22 14
+     A                                 22 28'Intereses:'
+     A            XPRINT        11S 2O 22 40
+     A                                 22 54'Prima:'
+     A            XPRPRI        11S 2O 22 61
+     A                                 23  2'Vacaciones:'
+     A            XPRVAC        11S 2O 23 15
+     A                                 23 30'Costo Total:'
+     A            XCOSTOT       13S 2O 23 44
+     A                                      DSPATR(HI)
+     A          R LIQFOOTER
+     A                                      OVERLAY
+     A                                 24  2'F5=Calcular'
+     A                                      COLOR(BLU)
+     A                                 24 16'F10=Guardar'
+     A                                      COLOR(BLU)
+     A                                 24 30'F12=Cancelar'
+     A                                      COLOR(BLU)
