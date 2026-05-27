@@ -1,6 +1,6 @@
 -- ============================================================
 -- popemp_colombia.sql
--- Datos de prueba: 12 empleados colombianos para demo AS400
+-- Datos de prueba: 13 empleados colombianos para demo AS400
 -- SALARY = salario mensual en COP (pesos colombianos)
 -- Cubre los 7 tramos de retención Art.383 E.T. (UVT 2024)
 -- Ejecutar en librería CMPSYS: RUNSQLSTM SRCSTMF('...')

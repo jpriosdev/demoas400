@@ -223,7 +223,7 @@ dcl-proc UpdateEmployee;
            sex      = :DESEX
      where empno    = :pEmpNo;
 
-  return sqlstate = '00000' or sqlstate = '02000';
+  return sqlstate = '00000';
 end-proc;
 
 //==============================================================

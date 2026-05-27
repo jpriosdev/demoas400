@@ -18,7 +18,7 @@
      A          R SFLDTA                    SFL
      A            MSEL           1A  B  5  3
      A            MNO            6A  O  5  6
-     A            MNOMBRE       27A  O  5 14
+     A            MNOMBRE       29A  O  5 14
      A            MDEPT          3A  O  5 43
      A            MJOB           8A  O  5 48
      A            MSAL          15S 2O  5 58EDTCDE(1)
