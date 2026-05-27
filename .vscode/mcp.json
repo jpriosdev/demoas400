@@ -1,0 +1,8 @@
+{
+	"servers": {
+		"tero": {
+			"type": "http",
+			"url": "https://agents-hub.abstracta.us/mcp"
+		}
+	}
+}
