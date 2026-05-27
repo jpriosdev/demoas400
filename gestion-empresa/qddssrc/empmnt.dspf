@@ -1,0 +1,97 @@
+     A*============================================================
+     A* EMPMNT - Mantenimiento de Empleados
+     A* Libreria: CMPSYS  Tabla: EMPLOYEE
+     A* Patron: employees.pgm.sqlrpgle + MTNCUSTR.SQLRPGLE
+     A*============================================================
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      INDARA
+     A                                      CA03(03 'F3=Salir')
+     A                                      CA06(06 'F6=Agregar')
+     A                                      CA12(12 'F12=Cancelar')
+     A*------------------------------------------------------------
+     A* CLRSCR: sin OVERLAY - limpia pantalla antes del detalle
+     A*------------------------------------------------------------
+     A          R CLRSCR
+     A*------------------------------------------------------------
+     A* SFLDTA: registro de subfile (una fila por empleado)
+     A*------------------------------------------------------------
+     A          R SFLDTA                    SFL
+     A            MSEL           1A  B  5  3
+     A            MNO            6A  O  5  6
+     A            MNOMBRE       27A  O  5 14
+     A            MDEPT          3A  O  5 43
+     A            MJOB           8A  O  5 48
+     A            MSAL          15S 2O  5 58EDTCDE(1)
+     A*------------------------------------------------------------
+     A* SFLCTL: control del subfile
+     A*------------------------------------------------------------
+     A          R SFLCTL                    SFLCTL(SFLDTA)
+     A                                      SFLPAG(0018)
+     A                                      SFLSIZ(9999)
+     A                                      OVERLAY
+     A  85                                  SFLDSPCTL
+     A  95                                  SFLDSP
+     A N85                                  SFLCLR
+     A            SFLRRN         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1 27'Mantenimiento de Empleados'
+     A                                      DSPATR(HI)
+     A                                  2  1'  Opciones: 2=Editar  4=Eliminar-
+     A                                        5=Visualizar'
+     A                                      COLOR(BLU)
+     A                                  4  3'Opc'
+     A                                      DSPATR(HI UL)
+     A                                  4  6'EmpNo'
+     A                                      DSPATR(HI UL)
+     A                                  4 14'Nombre'
+     A                                      DSPATR(HI UL)
+     A                                  4 43'Dep'
+     A                                      DSPATR(HI UL)
+     A                                  4 48'Cargo   '
+     A                                      DSPATR(HI UL)
+     A                                  4 58'Salario Mensual COP'
+     A                                      DSPATR(HI UL)
+     A*------------------------------------------------------------
+     A* FOOTER: leyenda F-keys para pantalla de lista
+     A*------------------------------------------------------------
+     A          R FOOTER
+     A                                      OVERLAY
+     A                                 23  1'F3=Salir  F6=Agregar  F12=Cancel-
+     A                                      ar'
+     A                                      COLOR(BLU)
+     A*------------------------------------------------------------
+     A* DETALLE: pantalla de mantenimiento (add/edit/display)
+     A*------------------------------------------------------------
+     A          R DETALLE
+     A                                      OVERLAY
+     A            DEFUNC        10A  O  1 27DSPATR(HI)
+     A                                  1 38'Empleado'
+     A                                  1 47DATE
+     A                                      EDTCDE(Y)
+     A                                  3  1'No. Empleado'
+     A            DEMNO          6A  O  3 15DSPATR(HI)
+     A                                  4  1'Nombre'
+     A            DEFIRST       12A  B  4 15
+     A                                  5  1'Inicial'
+     A            DEINIT         1A  B  5 15
+     A                                  6  1'Apellido'
+     A            DELAST        15A  B  6 15
+     A                                  7  1'Departamento'
+     A            DEDEPT         3A  B  7 15
+     A                                  8  1'Telefono'
+     A            DEPHON         4A  B  8 15
+     A                                  9  1'Cargo'
+     A            DEJOB          8A  B  9 15
+     A                                 10  1'Salario/Mes'
+     A            DESAL         15S 2B 10 15EDTCDE(1)
+     A                                 11  1'Sexo (M/F)'
+     A            DESEX          1A  B 11 15
+     A                                 12  1'Fecha Ingreso'
+     A            DEHIRE          L  B 12 15DATFMT(*ISO)
+     A            DEERR         50A  O 20  1COLOR(RED)
+     A*------------------------------------------------------------
+     A* DFOOTER: leyenda F-keys para pantalla de detalle
+     A*------------------------------------------------------------
+     A          R DFOOTER
+     A                                      OVERLAY
+     A                                 23  1'F12=Cancelar  Enter=Guardar/OK'
+     A                                      COLOR(BLU)
