@@ -32,13 +32,15 @@
      A            RSALEMP       13S 2O 12 15
      A                                 13  2'Pension (4%):'
      A            RPENEMP       13S 2O 13 16
-     A                                 14  2'Otras Deducciones:'
-     A            RODED         13S 2O 14 21
-     A                                 15  2'TOTAL DEDUCCIONES:'
-     A            RTOTDED       13S 2O 15 21
+     A                                 14  2'Ret.en la Fuente:'
+     A            RRET          13S 2O 14 20
+     A                                 15  2'Otras Deducciones:'
+     A            RODED         13S 2O 15 21
+     A                                 16  2'TOTAL DEDUCCIONES:'
+     A            RTOTDED       13S 2O 16 21
      A                                      DSPATR(HI)
-     A                                 16  2'NETO A PAGAR:'
-     A            RNETO         13S 2O 16 16
+     A                                 17  2'NETO A PAGAR:'
+     A            RNETO         13S 2O 17 16
      A                                      DSPATR(HI)
      A                                 18  2'===== APORTES EMPLEADOR ====='
      A                                      COLOR(WHT)
@@ -62,6 +64,8 @@
      A            RPRINT        11S 2O 23 40
      A                                 23 54'Prima:'
      A            RPRPRI        11S 2O 23 61
+     A                                 24  2'Vacaciones:'
+     A            RPRVAC        11S 2O 24 15
      A          R RPTFOOTER
      A                                      OVERLAY
      A                                 24  2'F12=Volver'

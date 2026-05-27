@@ -47,10 +47,12 @@
      A            XSALEMP       11S 2O 16 14
      A                                 16 29'Pension 4%:'
      A            XPENEMP       11S 2O 16 42
-     A                                 17  2'Total Deduccion:'
-     A            XTOTDED       13S 2O 17 19
-     A                                 17 34'NETO A PAGAR:'
-     A            XNETO         13S 2O 17 48
+     A                                 17  2'Ret.Fuente:'
+     A            XRET          13S 2O 17 15
+     A                                 17 34'Total Deduccion:'
+     A            XTOTDED       13S 2O 17 51
+     A                                 18  2'NETO A PAGAR:'
+     A            XNETO         13S 2O 18 16
      A                                      DSPATR(HI)
      A                                 18  2'--- Aportes Empleador ---'
      A                                      COLOR(WHT)
