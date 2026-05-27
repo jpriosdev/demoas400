@@ -103,8 +103,14 @@ end-proc;
 
 //==============================================================
 // HandleInputs: procesa opciones ingresadas en el subfile
+// Procesa el primer registro cambiado y recarga el subfile.
 //==============================================================
 dcl-proc HandleInputs;
+  dcl-s lEmpNo char(6);
+  dcl-s lFunc  char(1);
+
+  lFunc = ' ';
+
   dou %eof(empmnt);
     readc SFLDTA;
     if %eof(empmnt);
@@ -113,21 +119,35 @@ dcl-proc HandleInputs;
 
     select;
       when %trim(MSEL) = '2';        // Editar
-        ShowDetail('E': %trim(MNO));
-        LoadSubfile();
+        lEmpNo = %trim(MNO);
+        lFunc  = 'E';
       when %trim(MSEL) = '4';        // Eliminar
-        DeleteEmployee(%trim(MNO));
-        LoadSubfile();
+        lEmpNo = %trim(MNO);
+        lFunc  = 'D';
       when %trim(MSEL) = '5';        // Visualizar
-        ShowDetail('D': %trim(MNO));
-        LoadSubfile();
+        lEmpNo = %trim(MNO);
+        lFunc  = 'V';
     endsl;
 
     if MSEL <> ' ';
       MSEL = ' ';
       update SFLDTA;
+      leave;                          // un registro por Enter
     endif;
   enddo;
+
+  select;
+    when lFunc = 'E';
+      ShowDetail('E': lEmpNo);
+    when lFunc = 'D';
+      DeleteEmployee(lEmpNo);
+    when lFunc = 'V';
+      ShowDetail('D': lEmpNo);
+  endsl;
+
+  if lFunc <> ' ';
+    LoadSubfile();
+  endif;
 end-proc;
 
 //==============================================================
@@ -141,6 +161,8 @@ dcl-proc ShowDetail;
   end-pi;
 
   dcl-s lExit ind inz(*off);
+
+  lExit = *off;
 
   exec sql
     select empno, coalesce(firstnme,' '), coalesce(midinit,' '),
@@ -224,8 +246,12 @@ dcl-proc AddEmployee;
   dcl-s lExit  ind    inz(*off);
   dcl-s lNewId char(6) inz('000001');
 
+  lExit = *off;
+
   exec sql
-    select char(coalesce(max(int(empno)), 0) + 100, 6)
+    select right(repeat('0', 6) concat
+                 trim(char(coalesce(max(int(empno)), 0) + 100)),
+                 6)
       into :lNewId
       from cmpsys.employee;
 
