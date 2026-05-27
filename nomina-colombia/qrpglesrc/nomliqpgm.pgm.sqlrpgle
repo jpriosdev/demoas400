@@ -60,7 +60,7 @@ Dcl-Proc InicializarPantalla;
   Exec Sql
     Select trim(firstnme) concat ' ' concat trim(lastname)
       Into :XNOMBRE
-      From employee
+      From cmpsys.employee
      Where empno = :InEmpNo;
 
   Exec Sql

@@ -64,7 +64,7 @@ Dcl-Proc LoadSubfile;
            coalesce(nl.estado, '--'),
            coalesce(nl.neto_pagar, 0)
       From nomina_emp ne
-      Join employee   e  On e.empno = ne.empno
+      Join cmpsys.employee   e  On e.empno = ne.empno
       Left Join nomina_liq nl On nl.empno = ne.empno
                              And nl.periodo_id = :lPer
      Where ne.activo = 'S'

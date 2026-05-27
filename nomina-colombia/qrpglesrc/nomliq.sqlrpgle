@@ -34,7 +34,7 @@ dcl-proc calcularLiquidacion export;
            :liq.nivel_riesgo,
            :nombre
       from nomina_emp ne
-      join employee   e  on e.empno = ne.empno
+      join cmpsys.employee   e  on e.empno = ne.empno
      where ne.empno  = :empno
        and ne.activo = 'S';
 
