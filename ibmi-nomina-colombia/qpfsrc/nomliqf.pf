@@ -1,0 +1,60 @@
+     A*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     A* NOMLIQF - Archivo de liquidaciones quincenales de nomina
+     A* Sistema: ibmi-nomina-colombia
+     A* Integracion: LIQEMP referencia CMPSYS.EMPLOYEE.EMPNO
+     A* Estados: P=Pendiente L=Liquidada C=Contabilizada en intERPrise
+     A*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     A          R LIQREG
+     A*
+     A* Identificacion
+     A            LIQNUM         7S 0        COLHDG('Num' 'Liquidacion')
+     A            LIQEMP         6A          COLHDG('Cod' 'Empleado')
+     A            LIQPER         8A          COLHDG('Periodo' 'YYYYMMQQ')
+     A*
+     A* Fechas del periodo
+     A            LIQFIN          L          COLHDG('Fecha' 'Inicio')
+     A            LIQFFN          L          COLHDG('Fecha' 'Fin')
+     A            LIQDIA         2P 0        COLHDG('Dias' 'Trabaj')
+     A*
+     A* Horas extras (base para calculo de LIQHEX)
+     A            LIQHED         5P 2        COLHDG('H.Extra' 'Diurna')
+     A            LIQHEN         5P 2        COLHDG('H.Extra' 'Noct')
+     A            LIQHFD         5P 2        COLHDG('H.Extra' 'FestD')
+     A            LIQHFN         5P 2        COLHDG('H.Extra' 'FestN')
+     A            LIQRNO         5P 2        COLHDG('Recargo' 'Noct')
+     A*
+     A* Devengados
+     A            LIQSAL        13P 2        COLHDG('Salario' 'Quincena')
+     A            LIQTRP        11P 2        COLHDG('Aux' 'Transporte')
+     A            LIQHEX        13P 2        COLHDG('Valor' 'H.Extras')
+     A            LIQDTT        13P 2        COLHDG('Total' 'Devengado')
+     A*
+     A* Deducciones empleado
+     A            LIQSAE        11P 2        COLHDG('Salud' 'Emp 4%')
+     A            LIQPAE        11P 2        COLHDG('Pension' 'Emp 4%')
+     A            LIQODE        13P 2        COLHDG('Otras' 'Deduc')
+     A            LIQRET        13P 2        COLHDG('Retencion' 'Fuente')
+     A            LIQDDE        13P 2        COLHDG('Total' 'Deduc Emp')
+     A            LIQNTO        13P 2        COLHDG('Neto' 'a Pagar')
+     A*
+     A* Aportes patronales (costo empleador)
+     A            LIQSAP        11P 2        COLHDG('Salud' 'Pat 8.5%')
+     A            LIQPAP        11P 2        COLHDG('Pension' 'Pat 12%')
+     A            LIQARL        11P 2        COLHDG('ARL' 'Riesgo')
+     A            LIQSEN        11P 2        COLHDG('SENA' '2%')
+     A            LIQICB        11P 2        COLHDG('ICBF' '3%')
+     A            LIQCAJ        11P 2        COLHDG('Caja' 'Comp 4%')
+     A*
+     A* Provisiones (Art. 249, 299, 186 CST)
+     A            LIQCES        11P 2        COLHDG('Prov' 'Cesantias')
+     A            LIQICE        11P 2        COLHDG('Int' 'Cesantias')
+     A            LIQPRI        11P 2        COLHDG('Prov' 'Prima')
+     A            LIQVAC        11P 2        COLHDG('Prov' 'Vacaciones')
+     A*
+     A* Totales y control
+     A            LIQCST        13P 2        COLHDG('Costo' 'Total')
+     A            LIQEST         1A          COLHDG('Est')
+     A            LIQFEC          L          COLHDG('Fecha' 'Liquidacion')
+     A*
+     A          K LIQNUM
+     A          K LIQEMP
