@@ -55,8 +55,7 @@
      A*------------------------------------------------------------
      A          R FOOTER
      A                                      OVERLAY
-     A                                 23  1'F3=Salir  F6=Agregar  F12=Cancel-
-     A                                      ar'
+     A                                 23  1'F3=Salir  F6=Agregar  F12=Cancelar'
      A                                      COLOR(BLU)
      A*------------------------------------------------------------
      A* DETALLE: pantalla de mantenimiento (add/edit/display)
